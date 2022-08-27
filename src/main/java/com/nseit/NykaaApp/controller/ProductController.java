@@ -1,21 +1,36 @@
 package com.nseit.NykaaApp.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.nseit.NykaaApp.model.Product;
+import com.nseit.NykaaApp.repository.ProductRepository;
+import com.nseit.NykaaApp.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/Product")
+@RequestMapping("/product")
 public class ProductController {
-    public void addProduct(){
+    @Autowired
+    private ProductService productService;
 
+    @PostMapping
+    public void addProduct(@RequestBody Product product) {
+        productService.addProduct(product);
     }
-    public void viewProduct(){
 
+    @GetMapping("/all")
+    public List<Product> viewProduct(@PathVariable int id) {
+        return productService.viewProduct();
     }
-    public void updateProduct(){
 
+    @PutMapping
+    public void updateProduct(@RequestBody Product product) {
+        productService.updateProduct(product);
     }
-    public void deleteProduct(){
 
+    @DeleteMapping
+    public void deleteProduct(@PathVariable int id) {
+        productService.deleteProduct(id);
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class CategoryService {
     @Autowired
@@ -16,15 +17,18 @@ public class CategoryService {
     }
 
     public List<Category> viewCategory() {
+
         return categoryRepository.findAll();
     }
 
     public void updateCategory(Category category) {
+
         categoryRepository.save(category);
     }
 
     public void deleteCategory(int categoryId) {
 
+        categoryRepository.deleteById(categoryId);
     }
 
 }
