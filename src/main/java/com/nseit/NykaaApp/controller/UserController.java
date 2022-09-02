@@ -1,21 +1,35 @@
 package com.nseit.NykaaApp.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.nseit.NykaaApp.model.ProductUser;
+import com.nseit.NykaaApp.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    public void addUser(){
+    @Autowired
+    private UserService userService;
+    @PostMapping
+    public void addUser(@RequestBody ProductUser productUser){
+
+        userService.addUser(productUser);
+    }
+    @GetMapping("/all")
+    public List<ProductUser> viewUser(@PathVariable int id){
+        return userService.viewUser();
 
     }
-    public void viewUser(){
+    @PutMapping
+    public void updateUser(@RequestBody ProductUser productUser){
 
+        userService.updateUser(productUser);
     }
-    public void updateUser(){
+    @DeleteMapping
+    public void deleteUser(@PathVariable int id){
 
-    }
-    public void deleteUser(){
-
+        userService.deleteUser(id);
     }
 }

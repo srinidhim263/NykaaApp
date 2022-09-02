@@ -12,20 +12,25 @@ import java.util.List;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
+
     @PostMapping
-    public void addCategory(@RequestBody Category category){
+    public void addCategory(@RequestBody Category category) {
         categoryService.addCategory(category);
     }
+
     @GetMapping("/all")
-    public List<Category> viewCategory(@PathVariable int id){
-            return categoryService.viewCategory();
+    public List<Category> viewCategory(@PathVariable int id) {
+        return categoryService.viewCategory();
     }
+
     @PutMapping
-    public void updateCategory(@RequestBody Category category){
+    public void updateCategory(@RequestBody Category category) {
         categoryService.updateCategory(category);
     }
+
     @DeleteMapping
-    public void deleteCategory(@PathVariable int id){
+    public void deleteCategory(@PathVariable int id) {
+
         categoryService.deleteCategory(id);
     }
 }

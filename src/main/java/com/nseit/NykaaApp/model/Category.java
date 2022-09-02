@@ -1,16 +1,16 @@
 package com.nseit.NykaaApp.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Table(name = "category")
 public class Category {
     @Id
@@ -18,4 +18,6 @@ public class Category {
     private Integer categoryId;
     private String categoryName;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    private Set<Product> products;
 }

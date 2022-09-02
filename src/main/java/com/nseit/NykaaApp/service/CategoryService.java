@@ -17,17 +17,14 @@ public class CategoryService {
     }
 
     public List<Category> viewCategory() {
-
         return categoryRepository.findAll();
     }
 
     public void updateCategory(Category category) {
-
         categoryRepository.save(category);
     }
 
     public void deleteCategory(int categoryId) {
-
         categoryRepository.deleteById(categoryId);
     }
 

@@ -1,22 +1,28 @@
 package com.nseit.NykaaApp.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "role")
 public class Role {
+    public static final String ROLE_USER = "CUSTOMER";
+    public static final String ROLE_ADMIN = "ADMIN";
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String role;
+    private String name;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "roles", cascade = CascadeType.ALL)
+    private Set<ProductUser> productUsers;
+
 }
