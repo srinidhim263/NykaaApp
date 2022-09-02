@@ -23,4 +23,17 @@ public class UserService {
     public void deleteUser(int userId){
         userRepository.deleteById(userId);
     }
+
+
+    public ProductUser registerAsCustomer(ProductUser productUser) {
+        return null;
+    }
+
+    public ProductUser loginAsCustomer(ProductUser productUser) {
+        return null;
+    }
+
+    public List<ProductUser> getAllUsers() {
+        return null;
+    }
 }
